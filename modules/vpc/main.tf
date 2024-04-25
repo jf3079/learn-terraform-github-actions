@@ -184,7 +184,7 @@ resource "aws_instance" "Public_EC2" {
     #prevent_destroy = true
   }
   tags = {
-    Name = "Public_EC2"
+    Name = "My_Public_EC2"
   }
 }
 
@@ -201,6 +201,6 @@ resource "aws_instance" "Private_EC2" {
     #prevent_destroy = true
   }
   tags = {
-    Name = "Private_EC2"
+    Name = "My_Private_EC2"
   }
 }
