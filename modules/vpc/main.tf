@@ -161,7 +161,6 @@ resource "local_file" "ssh_key" {
 }
 
 # Filter to get the latest Amazon Linux AMI ID
-
 data "aws_ami" "latest_amz_linux" {
   most_recent = true
   owners      = ["amazon"]
@@ -172,7 +171,6 @@ data "aws_ami" "latest_amz_linux" {
 }
 
 # EC2 Instances in Public Subnet
-
 resource "aws_instance" "Public_EC2" {
   ami                    = data.aws_ami.latest_amz_linux.id
   instance_type          = "t2.micro"
@@ -189,7 +187,6 @@ resource "aws_instance" "Public_EC2" {
 }
 
 # EC2 Instances in Private Subnet
-
 resource "aws_instance" "Private_EC2" {
   ami                    = data.aws_ami.latest_amz_linux.id
   instance_type          = "t2.micro"
