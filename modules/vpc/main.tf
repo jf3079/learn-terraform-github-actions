@@ -19,7 +19,6 @@ provider "aws" {
 }
 
 # VPC
-
 resource "aws_vpc" "My-VPC" {
   cidr_block           = var.vpc_cidr
   enable_dns_hostnames = true
@@ -29,7 +28,6 @@ resource "aws_vpc" "My-VPC" {
 }
 
 # Subnets
-
 resource "aws_subnet" "Public-Subnet" {
   vpc_id                  = aws_vpc.My-VPC.id
   cidr_block              = var.public_subnet_cidr
@@ -51,7 +49,6 @@ resource "aws_subnet" "Private-Subnet" {
 }
 
 # Internet Gateway
-
 resource "aws_internet_gateway" "My-IGW" {
   vpc_id = aws_vpc.My-VPC.id
   tags = {
@@ -60,7 +57,6 @@ resource "aws_internet_gateway" "My-IGW" {
 }
 
 # NAT Gateway with Elastic IP Address
-
 resource "aws_eip" "My-NGW-EIP" {
 }
 
@@ -73,7 +69,6 @@ resource "aws_nat_gateway" "My-NGW" {
 }
 
 # Route table for Public Subnets
-
 resource "aws_route_table" "Public-rt" {
   vpc_id = aws_vpc.My-VPC.id
   tags = {
@@ -96,7 +91,6 @@ resource "aws_route" "Default_route_to_My-IGW" {
 }
 
 # Route table for Public Subnets
-
 resource "aws_route_table" "Private-rt" {
   vpc_id = aws_vpc.My-VPC.id
   tags = {
@@ -119,7 +113,6 @@ resource "aws_route" "Default_route_to_My-NGW" {
 }
 
 # Security Group
-
 resource "aws_security_group" "sg1" {
   name        = "sg1"
   description = "allow all traffic"
